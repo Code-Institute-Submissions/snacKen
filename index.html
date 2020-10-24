@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="assets/style.css">
+<title>snacKen</title>
+</head>
+<body>
+<canvas height="600" width="600"></canvas>
+
+<script> 
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext("2d");
+
+const snakeSize = 50;
+let snakeSpeed = 5;
+let snakePosX = 0;
+let snakePosY = canvas.height/2 - snakeSize/2 ;
+
+
+function gameLoop() {
+
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width , canvas.height);
+snakePosX += snakeSpeed;
+
+if (snakePosX > canvas.width) {
+
+    snakePosX = 0 ;
+}
+ctx.fillStyle = "gray";
+ctx.fillRect(snakePosX , snakePosY,  snakeSize, snakeSize);
+
+
+requestAnimationFrame(gameLoop);
+}
+gameLoop();
+</script>
+</body>
+</html>

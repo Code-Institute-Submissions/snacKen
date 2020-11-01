@@ -1,9 +1,7 @@
 body{
-    background: pink;
+    background: #b70d29;
 text-align: center;
 }
 canvas{
-    border: 5px solid gray;
-    background:palevioletred;
-
-}
+    border: 5px  double #000000  ;} /* #ffbf00*/ 
+   

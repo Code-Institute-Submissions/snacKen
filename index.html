@@ -22,7 +22,7 @@
            let gameIsRunning = true;
 
             const fps = 15;
-            const tileSize = 60;
+            const tileSize = 50;
       const tileCountX = canvas.width / tileSize;
       const tileCountY =  canvas.height / tileSize;
 
@@ -134,8 +134,7 @@ tail.forEach((snakePart) => {
           }
       }
           function gameOver() {
-              title.innerHtml = 
-      `☠️ <strong> ${score} </strong> ☠️`;
+              title.innerHtml = `☠️ <strong> ${score} </strong> ☠️`;
       gameIsRunning = false;
       }
 

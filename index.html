@@ -45,10 +45,8 @@
       let foodPosX = 0;
       let foodPosY = 0;
 
-
       function gameLoop() {
           if (gameIsRunning){
-              gamePause();
               drawStuff();
               moveStuff();
               setTimeout(gameLoop, 1000 / fps);
@@ -100,7 +98,7 @@ tail.forEach((snakePart) => {
               drawGrid();
 
               //food
-              rectangle("#00bfff" , foodPosX, foodPosY,tileSize, tileSize );
+              rectangle("#000" , foodPosX, foodPosY,tileSize, tileSize );
 
             //tail
             tail.forEach((snakePart) =>
@@ -194,7 +192,7 @@ tail.forEach((snakePart) => {
                }
 
            }
-
+       }
 
     </script>
   </body>

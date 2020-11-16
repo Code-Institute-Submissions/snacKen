@@ -9,8 +9,11 @@
   </head>
   <body>
     <canvas height="600" width="600">
-      <h1>0</h1>
     </canvas>
+  <h1>0</h1>
+<button id="pause-btn" type="button">
+   pause-button
+</button>
 
     <script>
             document.addEventListener("keydown", keyPush);
@@ -45,6 +48,7 @@
 
       function gameLoop() {
           if (gameIsRunning){
+              gamePause();
               drawStuff();
               moveStuff();
               setTimeout(gameLoop, 1000 / fps);
@@ -100,11 +104,11 @@ tail.forEach((snakePart) => {
 
             //tail
             tail.forEach((snakePart) =>
-            rectangle("#555", snakePart.x, snakePart.y, tileSize, tileSize));
+            rectangle("#ca6bc6", snakePart.x, snakePart.y, tileSize, tileSize));
             
 
             //snacken
-            rectangle("black", snakePosX, snakePosY , tileSize, tileSize);
+            rectangle("#782a74", snakePosX, snakePosY , tileSize, tileSize);
             }
 
           //rectangle 
@@ -190,7 +194,8 @@ tail.forEach((snakePart) => {
                }
 
            }
-       }
+
+
     </script>
   </body>
 </html>

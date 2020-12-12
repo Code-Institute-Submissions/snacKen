@@ -8,10 +8,25 @@
     <title>snacKen</title>
   </head>
   <body>
-
+      <div class="container">
+<div class="row">
+<div class="col">
+        <h1>SnacKen</h1>
+</div>
+</div>
+<div class="canvas">
+      <div class="row">
     <canvas height="600" width="600">
     </canvas>
-  <h1>0</h1>
+      </div>
+</div>
+    <section id="btn">
+    <span><h2>0</h2></span>
+<button id="button">PAUSE</button>
+
+
+    </section>
+
   <div class="row">
 <div class="col">
     <div class="slidein">
@@ -19,6 +34,7 @@
 </div>
 </div>
   </div>
+      </div>
 
     <script>
       
@@ -101,19 +117,19 @@ tail.forEach((snakePart) => {
 
             function drawStuff() {
 
-              rectangle("#b70d29", 0, 0, canvas.width, canvas.height);  //pozadie
+              rectangle("#ffffff", 0, 0, canvas.width, canvas.height);  //pozadie
               drawGrid();
 
               //food
-              rectangle("#000000", foodPosX, foodPosY,tileSize, tileSize );
+              rectangle("#ff5500", foodPosX, foodPosY,tileSize, tileSize);
 
             //tail
             tail.forEach((snakePart) =>
-            rectangle("#f700b5", snakePart.x, snakePart.y, tileSize, tileSize));
+            rectangle("#20B2AA", snakePart.x, snakePart.y, tileSize, tileSize));
             
 
             //snacken
-            rectangle("#782a74", snakePosX, snakePosY , tileSize, tileSize);
+            rectangle("#00FFFF", snakePosX, snakePosY , tileSize, tileSize);
             }
 
           //rectangle 

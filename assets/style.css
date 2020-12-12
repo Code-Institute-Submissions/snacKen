@@ -1,15 +1,24 @@
-body{
-    background:linear-gradient(to right,
-      rgba(53, 251, 4, 0.955)25%,
-      rgba(188, 255, 45, 0.976)) 50%,
-      rgba(14, 252, 220, 0.9) 75%;
+.container{
+    max-width: 100%;
+    max-height: 100%;
+    background:#000000;
 text-align: center;
 }
 canvas{
-    border: 5px  double #000000  ;/* #ffbf00*/ 
+    border: 5px  double #fcfafa  ;/* #ffbf00*/ 
+}
+
+h2{
+    color:cyan;
+    margin: 10px;
+      font-size: 4em;
+    font-family: 'Orbitron', 'Sans-serif';
+    font-weight: bold;
+    letter-spacing: -10px;
 }
 h1{
-    margin-top: 0;
+    color: cyan;
+    margin-top: 10px;
     font-size: 4em;
     font-family: 'Orbitron', 'Sans-serif';
     font-weight: bold;
@@ -21,6 +30,22 @@ h1 strong {
    margin: 0 0.25em; 
 }
 
+#button{
+width: 7rem;
+height: 3rem;
+background-color: cyan;
+color: black;
+ font-size: 2rem;
+    font-family: 'Orbitron', 'Sans-serif';
+    font-weight: bold;
+border-color: black;
+
+}
+.btn{
+  font-size: 2rem;
+    font-family: 'Orbitron', 'Sans-serif';
+    font-weight: bold;
+}
 /*
     animation: 3s linear 1s 1 alternate slidein;
 }
@@ -35,14 +60,20 @@ h1 strong {
 }
 */
 .slidein{
+    margin-top: 1rem;
+    margin-left: 44%;
+    max-width: 100%;
+    max-height: 100%;
  animation-name: rotate; 
-  animation-duration: 0.7s;}
+  animation-duration: 5s;
+  
+}
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0);
+  50% {
+    transform: rotate(180deg);
   }
-  100% {
+  200% {
     transform: rotate(360deg);
   }
 }

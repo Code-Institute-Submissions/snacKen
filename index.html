@@ -1,223 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="assets/style.css" />
     <title>snacKen</title>
-  </head>
-  <body>
-      <div class="container">
-<div class="row">
-<div class="col">
-        <h1>SnacKen</h1>
-</div>
-</div>
-<div class="canvas">
-      <div class="row">
-    <canvas height="600" width="600">
-    </canvas>
-      </div>
-</div>
-    <section id="btn">
-    <span><h2>0</h2></span>
-<button id="button">PAUSE</button>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>SnacKen</h1>
+            </div>
+        </div>
+        <div class="canvas">
+            <div class="row">
+                <canvas height="600" width="600">
+                </canvas>
+            </div>
+        </div>
+        <section id="btn">
+            <span>
+                <h2>0</h2>
+            </span>
+            <button id="play" onclick="toggle(this)">PLAY</button>
 
 
-    </section>
+        </section>
 
-  <div class="row">
-<div class="col">
-    <div class="slidein">
-<img src="assets/images/snk.png" width="50%" height="50%" >
-</div>
-</div>
-  </div>
-      </div>
+        <div class="row">
+            <div class="col">
+                <div class="slidein">
+                    <img src="assets/images/snk.png" width="50%" height="50%">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-      
-
-            document.addEventListener("keydown", keyPush);
-
-            const canvas = document.querySelector("canvas");
-            const title = document.querySelector("h1");
-            const ctx = canvas.getContext("2d");
-           
-           let gameIsRunning = true;
-
-            const fps = 15;
-            const tileSize = 50;
-      const tileCountX = canvas.width / tileSize;
-      const tileCountY =  canvas.height / tileSize;
-
-      let score = 0;
-
-      let snakeSpeed = tileSize;
-      let snakePosX = 0;
-      let snakePosY = canvas.height / 2 ;
-
-      let velocityX = 1;
-      let velocityY = 0;
-
-      let tail = [];
-      let snakeLength = 4;
-
-      //food
-      let foodPosX = 0;
-      let foodPosY = 0;
-
-      function gameLoop() {
-          if (gameIsRunning){
-              drawStuff();
-              moveStuff();
-              setTimeout(gameLoop, 1000 / fps);
-                  }
-}
-       resetFood();
-      	gameLoop();
-
-
-      	function moveStuff() {
-      	snakePosX += snakeSpeed * velocityX;
-      	snakePosY += snakeSpeed * velocityY;
-
-      	//stena-walls
-      	if (snakePosX > canvas.width - tileSize) {
-      	snakePosX = 0;
-          }
-          
-      	if (snakePosX < 0) { 
-              snakePosX = canvas.width;}
-
-        if (snakePosY > canvas.height - tileSize) {
-      		snakePosY = 0;
-      		}
-              if (snakePosY < 0){ 
-                snakePosY = canvas.height; }  
-
-tail.forEach((snakePart) => {
-            if (snakePosX === snakePart.x && snakePosY === snakePart.y){
-                gameOver();
+        function toggle(h)
+        {
+            if (gameIsRunning)
+            {
+                gameIsRunning = false;
+                h.textContent = "PLAY";
             }
-});
-      //tail
-           tail.push({ x: snakePosX, y: snakePosY }) ;
-     //head
-              tail = tail.slice(-1 * snakeLength); 
-              
-              if (snakePosX === foodPosX && snakePosY === foodPosY) { title.textContent = ++score;
-               snakeLength++;
-                  resetFood(); 
-                  }    
+            else
+            {
+                gameIsRunning = true;
+                h.textContent = "PAUSE";
+                gameLoop();
+            }
+        }
+
+        document.addEventListener("keydown", keyPush);
+
+        const canvas = document.querySelector("canvas");
+        const title = document.querySelector("h2");
+        const ctx = canvas.getContext("2d");
+
+        let gameIsRunning = false;
+
+        const fps = 15;
+        const tileSize = 50;
+        const tileCountX = canvas.width / tileSize;
+        const tileCountY = canvas.height / tileSize;
+
+        let score = 0;
+
+        let snakeSpeed = tileSize;
+        let snakePosX = 0;
+        let snakePosY = canvas.height / 2;
+
+        let velocityX = 1;
+        let velocityY = 0;
+
+        let tail = [];
+        let snakeLength = 4;
+
+        //food
+        let foodPosX = 0;
+        let foodPosY = 0;
+
+        function gameLoop()
+        {
+            if (gameIsRunning)
+            {
+                drawStuff();
+                moveStuff();
+                setTimeout(gameLoop, 1000 / fps);
+            }
+        }
+        resetFood();
+        drawStuff();
+
+
+
+        function moveStuff()
+        {
+            snakePosX += snakeSpeed * velocityX;
+            snakePosY += snakeSpeed * velocityY;
+
+            //stena-walls
+            if (snakePosX > canvas.width - tileSize)
+            {
+                snakePosX = 0;
+            }
+
+            if (snakePosX < 0)
+            {
+                snakePosX = canvas.width;
+            }
+
+            if (snakePosY > canvas.height - tileSize)
+            {
+                snakePosY = 0;
+            }
+            if (snakePosY < 0)
+            {
+                snakePosY = canvas.height;
+            }
+
+            tail.forEach((snakePart) =>
+            {
+                if (snakePosX === snakePart.x && snakePosY === snakePart.y)
+                {
+                    gameOver();
                 }
+            });
+            //tail
+            tail.push({ x: snakePosX, y: snakePosY });
+            //head
+            tail = tail.slice(-1 * snakeLength);
 
-      //DRAWINGS ++
+            if (snakePosX === foodPosX && snakePosY === foodPosY)
+            {
+                title.textContent = ++score;
+                snakeLength++;
+                resetFood();
+            }
+        }
 
-            function drawStuff() {
+        //DRAWINGS ++
 
-              rectangle("#ffffff", 0, 0, canvas.width, canvas.height);  //pozadie
-              drawGrid();
+        function drawStuff()
+        {
 
-              //food
-              rectangle("#ff5500", foodPosX, foodPosY,tileSize, tileSize);
+            rectangle("#ffffff", 0, 0, canvas.width, canvas.height);  //pozadie
+            drawGrid();
+
+            //food
+            rectangle("#ff5500", foodPosX, foodPosY, tileSize, tileSize);
 
             //tail
             tail.forEach((snakePart) =>
-            rectangle("#20B2AA", snakePart.x, snakePart.y, tileSize, tileSize));
-            
+                rectangle("#20B2AA", snakePart.x, snakePart.y, tileSize, tileSize));
+
 
             //snacken
-            rectangle("#00FFFF", snakePosX, snakePosY , tileSize, tileSize);
+            rectangle("#00FFFF", snakePosX, snakePosY, tileSize, tileSize);
+        }
+
+        //rectangle 
+        function rectangle(color, x, y, width, height)
+        {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+        }
+
+        function resetFood()
+        {
+            if (snakeLength === tileCountX * tileCountY)
+            {
+                gameOver();
+
+            }
+            foodPosX = Math.floor(Math.random() * tileCountX) * tileSize;
+            foodPosY = Math.floor(Math.random() * tileCountY) * tileSize;
+
+            if (foodPosX === snakePosX && foodPosY === snakePosY)
+            {
+                resetFood();
             }
 
-          //rectangle 
-            function rectangle(color, x, y, width, height) {
-              ctx.fillStyle = color;
-              ctx.fillRect(x, y, width, height);
+            if (
+                tail.some(
+                    (snakePart) => snakePart.x === foodPosX && snakePart.y === foodPosY)
+            )
+            {
+
+                resetFood();
             }
+        }
+        function gameOver()
+        {
+            title.innerHtml = `☠️ <strong> ${score} </strong> ☠️`;
+            gameIsRunning = false;
+        }
 
-      function resetFood() {
-          if (snakeLength === tileCountX * tileCountY) {
-              gameOver();
+        // KEYS
 
-          }
-          foodPosX = Math.floor(Math.random() * tileCountX) * tileSize;
-          foodPosY = Math.floor(Math.random() * tileCountY) * tileSize;
+        function keyPush(event)
+        {
 
-          if (foodPosX ===  snakePosX && foodPosY === snakePosY) {
-              resetFood();
-          }
+            switch (event.key)
+            {
+                case "ArrowLeft":
+                    if (velocityX !== 1)
+                    {
+                        velocityX = -1;
+                        velocityY = 0;
+                    }
+                    break;
 
-          if (
-              tail.some( 
-                  (snakePart) => snakePart.x === foodPosX && snakePart.y === foodPosY)
-          ) {
+                case "ArrowUp":
+                    if (velocityY !== 1)
+                    {
+                        velocityX = 0;
+                        velocityY = -1;
+                    }
+                    break;
 
-              resetFood();
-          }
-      }
-          function gameOver() {
-              title.innerHtml = `☠️ <strong> ${score} </strong> ☠️`;
-      gameIsRunning = false;
-      }
+                case "ArrowRight":
+                    if (velocityX !== -1)
+                    {
+                        velocityX = 1;
+                        velocityY = 0;
+                    }
+                    break;
 
-      // KEYS
+                case "ArrowDown":
+                    if (velocityY !== -1)
+                    {
+                        velocityX = 0;
+                        velocityY = 1;
+                    }
+                    break;
+                default:
+                    if (!gameIsRunning) location.reload();
+                    break;
+            }
+        }
+        //grid
 
-      function keyPush(event) {
+        function drawGrid()
+        {
+            for (let i = 0; i < tileCountX; i++)
+            {
+                for (let j = 0; j < tileCountY; j++)
+                {
+                    rectangle(
+                        "#ffbf00",
+                        tileSize * i,
+                        tileSize * j,
+                        tileSize - 1,
+                        tileSize - 1
+                    );
+                }
 
-          switch (event.key){
-              case "ArrowLeft":
-                  if (velocityX !== 1) {
-                      velocityX = -1;
-                      velocityY = 0;
-                  }
-                  break;
+            }
+        }
 
-             case "ArrowUp":
-                 if (velocityY !== 1) {
-                     velocityX = 0;
-                     velocityY = -1;
-                 }
-                 break;
-
-              case "ArrowRight":
-                  if (velocityX !== -1) {
-                      velocityX = 1;
-                      velocityY = 0;
-                  }
-                  break;
-
-                 case "ArrowDown":
-                     if (velocityY !== -1) {
-                         velocityX = 0;
-                         velocityY = 1;
-                     }
-                     break;
-                     default:
-                         if(!gameIsRunning) location.reload();
-                         break;
-          }
-      }
-       //grid
-
-       function drawGrid() {
-           for (let i = 0; i < tileCountX; i++){
-               for (let j = 0; j < tileCountY; j++) {
-                   rectangle(
-                      "#ffbf00",
-                       tileSize * i,
-                       tileSize * j,
-                       tileSize - 1,
-                       tileSize - 1
-                   );
-               }
-
-           }
-       }
-       
 
     </script>
-  </body>
+</body>
+
 </html>

@@ -8,14 +8,21 @@
     <title>snacKen</title>
   </head>
   <body>
+
     <canvas height="600" width="600">
     </canvas>
   <h1>0</h1>
-<button id="pause-btn" type="button">
-   pause-button
-</button>
+  <div class="row">
+<div class="col">
+    <div class="slidein">
+<img src="assets/images/snk.png" width="50%" height="50%" >
+</div>
+</div>
+  </div>
 
     <script>
+      
+
             document.addEventListener("keydown", keyPush);
 
             const canvas = document.querySelector("canvas");
@@ -98,11 +105,11 @@ tail.forEach((snakePart) => {
               drawGrid();
 
               //food
-              rectangle("#000" , foodPosX, foodPosY,tileSize, tileSize );
+              rectangle("#000000", foodPosX, foodPosY,tileSize, tileSize );
 
             //tail
             tail.forEach((snakePart) =>
-            rectangle("#ca6bc6", snakePart.x, snakePart.y, tileSize, tileSize));
+            rectangle("#f700b5", snakePart.x, snakePart.y, tileSize, tileSize));
             
 
             //snacken
@@ -193,6 +200,7 @@ tail.forEach((snakePart) => {
 
            }
        }
+       
 
     </script>
   </body>

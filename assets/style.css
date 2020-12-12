@@ -1,5 +1,8 @@
 body{
-    background: #b70d29;
+    background:linear-gradient(to right,
+      rgba(53, 251, 4, 0.955)25%,
+      rgba(188, 255, 45, 0.976)) 50%,
+      rgba(14, 252, 220, 0.9) 75%;
 text-align: center;
 }
 canvas{
@@ -17,4 +20,29 @@ h1 strong {
    display: inline-block;
    margin: 0 0.25em; 
 }
-   
+
+/*
+    animation: 3s linear 1s 1 alternate slidein;
+}
+   @keyframes slidein {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+*/
+.slidein{
+ animation-name: rotate; 
+  animation-duration: 0.7s;}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

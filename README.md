@@ -6,9 +6,9 @@ SnacKen Game is a fun classic game,which will let you dive into the memories of 
 
 The player controls an object in a bounded plane.
 
-### The game starts when you press the PLAY button,same as we can also pause the game at any time with a same PAUSE button.
+The game starts when you press the PLAY button,same as we can also pause the game at any time with a same PAUSE button.
 
-### Moving  and on the sides player controls it with a arrow keys.
+Moving of a snake  player controls it with a arrow keys.
 
 As it moves forward, it leaves a trail behind, resembling a moving snake.
 
@@ -23,24 +23,17 @@ CSS
 JavaScript
 
 ## Testing
-
-## Credits
-
-### Content
-- guidline on SnacKen project - Yablko/Roman Hraska(mentor)
+lighthouse-pdf in folder
 
 ### Acknowledgements
-## Credits
-Content
-guidline on SnacKen project - Yablko/Roman Hraska(mentor)
-
-Acknowledgements
 
 ## Credits
 
 ### Content
-- guidline on SnacKen project - Yablko/Roman Hraska(mentor)
+guideline on SnacKen project - Yablko/Roman Hraska
 
 ### Acknowledgements
 
 - I received inspiration for this project from Yablko/Roman Hraska(mentor)
+
+## by duchees
